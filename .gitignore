@@ -5,3 +5,10 @@ tags
 install-ubuntu.sh
 CODEOWNERS
 install-mac.sh
+pid
+cmake_install.cmake
+Makefile
+.project
+.cproject
+CMakeFiles/
+.settings/
