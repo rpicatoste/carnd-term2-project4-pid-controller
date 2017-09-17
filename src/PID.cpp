@@ -67,9 +67,7 @@ double PID::runPID( double error )
 
 
 	proportional_action = this->Kp * error;
-
 	derivative_action = this->Kd * (error - error_prev);
-
 
 	// Integrator anti-windup: Integrator clampling:
 	// Do not accumulate error in the integrator if there is saturation and error in the same direction,
