@@ -3,48 +3,44 @@
 
 class PID {
 public:
-  /*
-  * Errors
-  */
-  double p_error;
-  double i_error;
-  double d_error;
+	/*
+	* Values to be stored from one iteration to the next.
+	*/
+	double integral_action_prev;
+	double error_prev;
+	double unsaturated_control_action_prev;
+	double saturated_control_action_prev;
 
-  double cte_prev;
+	/*
+	* Coefficients
+	*/
+	double Kp;
+	double Ki;
+	double Kd;
 
-  /*
-  * Coefficients
-  */ 
-  double Kp;
-  double Ki;
-  double Kd;
+	// Min and max control action values.
+	double min_control_action;
+	double max_control_action;
 
-  /*
-  * Constructor
-  */
-  PID();
+	/*
+	* Constructor
+	*/
+	PID();
 
-  /*
-  * Destructor.
-  */
-  virtual ~PID();
+	/*
+	* Destructor.
+	*/
+	virtual ~PID();
 
-  /*
-  * Initialize PID.
-  */
-  void Init(double Kp, double Ki, double Kd);
+	/*
+	* Initialize PID.
+	*/
+	void Init(double Kp, double Ki, double Kd, double min_control_action, double max_control_action);
 
-  /*
-  * Update the PID error variables given cross track error.
-  */
-  void UpdateError(double cte);
-
-  /*
-  * Calculate the total PID error.
-  */
-  double TotalError();
-
-  double runPID( double error );
+	/*
+	* Run the PID controller
+	*/
+	double runPID( double error );
 
 };
 
